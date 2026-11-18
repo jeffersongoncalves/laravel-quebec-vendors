@@ -1,0 +1,70 @@
+{
+    "name": "jeffersongoncalves/laravel-quebec-vendors",
+    "description": "Vendors under Quebec Law 25: service providers with a written mandate contract (s. 18.3), communications outside Quebec after a privacy impact assessment (s. 17), risk-based reviews",
+    "keywords": [
+        "laravel",
+        "privacy",
+        "quebec",
+        "law-25",
+        "vendors",
+        "service-providers"
+    ],
+    "homepage": "https://github.com/jeffersongoncalves/laravel-quebec-vendors",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Jefferson Simão Gonçalves",
+            "email": "gerson.simao.92@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "spatie/laravel-package-tools": "^1.16",
+        "illuminate/contracts": "^12.0|^13.0"
+    },
+    "require-dev": {
+        "larastan/larastan": "^3.0",
+        "laravel/pint": "^1.24",
+        "orchestra/testbench": "^10.0|^11.0",
+        "pestphp/pest": "^3.0|^4.0",
+        "pestphp/pest-plugin-laravel": "^3.0|^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "JeffersonGoncalves\\QuebecVendors\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "JeffersonGoncalves\\QuebecVendors\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
+        "test": "vendor/bin/pest",
+        "test-coverage": "vendor/bin/pest --coverage",
+        "format": "vendor/bin/pint",
+        "analyse": "vendor/bin/phpstan analyse"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "JeffersonGoncalves\\QuebecVendors\\QuebecVendorsServiceProvider"
+            ],
+            "aliases": {
+                "QuebecVendors": "JeffersonGoncalves\\QuebecVendors\\Facades\\QuebecVendors"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
