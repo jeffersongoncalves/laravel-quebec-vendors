@@ -2,6 +2,7 @@
 
 namespace JeffersonGoncalves\QuebecVendors;
 
+use JeffersonGoncalves\QuebecVendors\Commands\VendorsCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -10,9 +11,9 @@ class QuebecVendorsServiceProvider extends PackageServiceProvider
     public function configurePackage(Package $package): void
     {
         $package
-            ->name('laravel-quebec-vendors')
+            ->name('quebec-vendors')
             ->hasConfigFile()
-            ->hasViews()
-            ->hasMigrations();
+            ->hasMigrations(['create_quebec_vendors_table'])
+            ->hasCommand(VendorsCommand::class);
     }
 }
